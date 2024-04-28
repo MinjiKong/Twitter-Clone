@@ -57,7 +57,7 @@ const Tweet = () => {
             ❤️ {likesData.likes.length === 0 ? 0 : likesData.likes.length}
           </p>
           <button
-            className="bg-red-500 rounded-lg w-20 hover:bg-red-600"
+            className="bg-red-600 rounded-lg w-20 hover:bg-red-700"
             onClick={handleLike}
           >
             {userLiked ? "Unlike" : "Like"}
