@@ -48,7 +48,10 @@ const Tweet = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className=" bg-white m-10 rounded-xl p-5 w-80 h-auto flex flex-col">
-        <p className="bg-white text-black mb-5">{tweetData.text}</p>
+        <p className="bg-gray-800 text-white font-bold p-1">
+          UserId: {tweetData.userId}
+        </p>
+        <p className="bg-white mt-2 text-black mb-6">{tweetData.text}</p>
         <div className="flex bg-white justify-between">
           <p className="bg-white text-black">
             ❤️ {likesData.likes.length === 0 ? 0 : likesData.likes.length}
