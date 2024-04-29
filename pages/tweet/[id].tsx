@@ -10,10 +10,17 @@ const Tweet = () => {
   const router = useRouter();
   const { user } = useUser();
   const { id } = router.query;
+  let shouldFetch = false;
 
-  const { data: tweetData, error: tweetError } = useSWR(`../api/tweets/${id}`);
+  if (id !== undefined) {
+    shouldFetch = true;
+  }
+
+  const { data: tweetData, error: tweetError } = useSWR(
+    shouldFetch ? `../api/tweets/${id}` : null
+  );
   const { data: likesData, error: likesError } = useSWR(
-    `../api/tweets/${id}/likes`
+    shouldFetch ? `../api/tweets/${id}/likes` : null
   );
 
   const [likeTweet] = useMutation(`../api/likes/${id}`);
