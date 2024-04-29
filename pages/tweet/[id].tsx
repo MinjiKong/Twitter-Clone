@@ -34,18 +34,14 @@ const Tweet = () => {
     await likeTweet(id);
 
     // Trigger revalidation of the SWR cache for tweet likes
-    mutate(
-      `../api/tweets/${id}/likes`,
-      async (data: any) => {
-        // Fetch the latest likes data from the server
-        const response = await fetch(`../api/tweets/${id}/likes`);
-        const newData = await response.json();
+    mutate(`../api/tweets/${id}/likes`, async (data: any) => {
+      // Fetch the latest likes data from the server
+      const response = await fetch(`../api/tweets/${id}/likes`);
+      const newData = await response.json();
 
-        // Update the likes count and return the updated data
-        return { ...data, likes: newData.likes };
-      },
-      false
-    );
+      // Update the likes count and return the updated data
+      return { ...data, likes: newData.likes };
+    });
   };
 
   const userLiked = likesData.likes.some(
